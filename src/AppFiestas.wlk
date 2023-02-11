@@ -19,17 +19,16 @@ object appFiestas {
 	
 	method estanEnFiesta(unaFiesta, unAsistente, otroAsistente) {
 		
-		return (unaFiesta.invitados().contains(unAsistente) &&
-			unaFiesta.invitados().contains(otroAsistente)
-		)
+		return (unaFiesta.estaEnFiesta(unAsistente) && unaFiesta.estaEnFiesta(otroAsistente))
 	}
 	
 	method cambiandoElTrajeEstanConforme(unAsistente, otroAsistente) {
 	const disfrazAuxiliar = unAsistente.disfraz()
-	
+		
+		if(unAsistente.tieneDisfraz() && otroAsistente.tieneDisfraz()) {
 		unAsistente.cambiarDisfraz(otroAsistente.disfraz())
 		otroAsistente.cambiarDisfraz(disfrazAuxiliar)
-	
+		}
 		return (unAsistente.estaConforme() && otroAsistente.estaConforme())
 	}
 	

@@ -6,6 +6,8 @@ class Disfraz {
 	var duenio
 	const fiesta
 	
+	method nombre() = nombre
+	
 	method caracteristicas() = caracteristicas
 	
 	method fecha() = fechaConfeccion

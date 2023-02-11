@@ -5,6 +5,7 @@ class Fiesta {
 	const invitados = []
 	
 	method fecha() = fecha
+	method lugar() = lugar
 	
 	method esUnBodrio() {
 		
@@ -30,6 +31,11 @@ class Fiesta {
 	method esInolvidable() {
 		
 		return (invitados.all({ unInvitado => unInvitado.esSexie() && unInvitado.estaConforme()}))
+	}
+	
+	method estaEnFiesta(unAsistente) {
+		
+		return invitados.contains(unAsistente)
 	}
 	
 }
