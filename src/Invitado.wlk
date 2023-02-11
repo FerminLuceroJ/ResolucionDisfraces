@@ -28,6 +28,11 @@ class Invitado {
 		
 		disfraz = unDisfraz
 	}
+	
+	method tieneDisfraz() {
+		
+		return (disfraz != null)
+	}
 }
 
 class Caprichoso inherits Invitado {

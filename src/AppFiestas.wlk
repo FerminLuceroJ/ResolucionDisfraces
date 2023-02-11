@@ -4,8 +4,7 @@ object appFiestas {
 	
 	method puntajeDisfraz(unDisfraz) {
 		
-		return (unDisfraz.caracteristicas().sum({ unaCaracteristica =>
-					unaCaracteristica.puntaje()}))
+		return (unDisfraz.puntaje())
 	}
 	
 	method esUnBodrio(unaFiesta) {
@@ -30,15 +29,21 @@ object appFiestas {
 	
 		unAsistente.cambiarDisfraz(otroAsistente.disfraz())
 		otroAsistente.cambiarDisfraz(disfrazAuxiliar)
-		
+	
+		return (unAsistente.estaConforme() && otroAsistente.estaConforme())
 	}
 	
 	method puedenIntercambiarDisfrases(unaFiesta, unAsistente, otroAsistente) {
 		
 		return (self.estanEnFiesta(unaFiesta, unAsistente, otroAsistente) &&
 			   (!unAsistente.estaConforme() or (!otroAsistente.estaConforme())) &&
-			   	
+			   (self.cambiandoElTrajeEstanConforme(unAsistente, otroAsistente))
 		)
+	}
+	
+	method agregarAsistenteAFiesta(unAsistente, unaFiesta) {
+		
+		unaFiesta.agregarAsistente(unAsistente)
 	}
 	
 }

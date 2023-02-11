@@ -6,12 +6,6 @@ class Fiesta {
 	
 	method fecha() = fecha
 	
-	method puntajeDisfraz(unDisfraz) {
-		
-		return (unDisfraz.caracteristicas().sum({ unaCaracteristica =>
-					unaCaracteristica.puntaje()}))
-	}
-	
 	method esUnBodrio() {
 		
 		return (invitados.all({ unInvitado => !unInvitado.estaConforme()}))
@@ -21,5 +15,17 @@ class Fiesta {
 		
 		return (invitados.max({ unInvitado => unInvitado.disfraz().puntaje()})).disfraz()
 	}
+	
+	method agregarAsistente(unAsistente) {
+		
+		if(unAsistente.tieneDisfraz() && !invitados.contains(unAsistente)) {
+			
+			invitados.add(unAsistente)
+		}else {
+			
+			self.error("No se puedo agregar al asistente")
+		}
+	}
+	
 	
 }
