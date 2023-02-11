@@ -46,4 +46,9 @@ object appFiestas {
 		unaFiesta.agregarAsistente(unAsistente)
 	}
 	
+	method esFiestaInolvidable(unaFiesta) {
+		
+		return (unaFiesta.esInolvidable())
+	}
+	
 }

@@ -23,9 +23,13 @@ class Fiesta {
 			invitados.add(unAsistente)
 		}else {
 			
-			self.error("No se puedo agregar al asistente")
+			self.error("No se pudo agregar al asistente")
 		}
 	}
 	
+	method esInolvidable() {
+		
+		return (invitados.all({ unInvitado => unInvitado.esSexie() && unInvitado.estaConforme()}))
+	}
 	
 }
