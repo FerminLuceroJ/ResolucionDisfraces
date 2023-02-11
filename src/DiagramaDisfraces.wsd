@@ -1,0 +1,134 @@
+@startuml DiagramaDisfraces
+
+object AppFiestas {
+
+    fiestas 
+    puntajeDisfraz(unDisfraz)
+    esUnBodrio(unaFiesta)
+    mejorDisfraz(unaFiesta)
+    estanEnFiesta(unaFiesta, unAsistente, otroAsistente)
+    cambiandoElTrajeEstanConforme(unAsistente, otroAsistente)
+    puedenIntercambiarDisfrases(unaFiesta, unAsistente, otroAsistente)
+    agregarAsistenteAFiesta(unAsistente, unaFiesta)
+    esFiestaInolvidable(unaFiesta)
+
+}
+
+interface Caracteristica
+class Disfraz {
+
+    nombre
+    fechaConfeccion
+    caracteristicas 
+    duenio
+    fiesta 
+    puntaje()
+    diasHecho()
+}
+class Fiesta {
+
+    lugar
+    fecha 
+    invitados
+    esUnBodrio()
+    mejorDisfraz()
+    agregarAsistente(unAsistente)
+    esInolvidable()
+    estaEnFiesta(unAsistente)
+
+
+}
+
+class Invitado {
+
+    disfraz 
+    personalidad 
+    edad 
+    fechaDisfraz()
+    esSexie()
+    estaConforme()
+    cambiarDisfraz(unDisfraz)
+    tieneDisfraz()
+}
+
+class Caprichoso {
+
+    estaConforme()
+}
+
+class Pretencioso  {
+
+    estaConforme()
+}
+
+class Numerologo {
+
+    numeroElegido
+    estaConforme()
+
+}
+
+object alegre {
+
+    esSexie(unaPersona)
+}
+
+object tacituma {
+
+    esSexie(unaPersona)
+
+}
+
+object cambiante {
+
+    personalidades
+    esSexie(unaPersona)
+
+}
+interface Personalidad
+
+class Gracioso {
+
+    nivelDeGracia
+    puntaje(unInvitado, unaFiesta)
+
+
+}
+
+class Tobaras {
+
+    puntaje(unInvitado, unaFiesta)
+
+}
+
+class Careta {
+
+    valorPersonaje
+    puntaje(unInvitado, unaFiesta)
+
+}
+
+class Sexie {
+
+    puntaje(unInvitado, unaFiesta)
+
+}
+
+AppFiestas -->"*" Fiesta: fiestas
+Fiesta -->"*" Invitado: invitados
+Invitado <|-- Caprichoso
+Invitado <|-- Pretencioso
+Invitado <|-- Numerologo
+Invitado --> Personalidad
+Personalidad <|.. alegre
+Personalidad <|.. tacituma
+Personalidad <|.. cambiante
+Invitado -l-> Disfraz
+Disfraz -->"*" Caracteristica
+Caracteristica <|.. Gracioso
+Caracteristica <|.. Tobaras
+Caracteristica <|.. Sexie
+Caracteristica <|.. Careta
+
+
+@enduml
